@@ -1,5 +1,6 @@
 {
     "name": "co2-mp3-lcd-62",
+    "version": "0.0.1",
     "description": "",
     "dependencies": {
         "core": "*",
