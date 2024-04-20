@@ -1,0 +1,27 @@
+{
+    "name": "co2-mp3-lcd-62",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "v2": "*",
+        "CO2-Sensor-SCD40": "github:calliope-edu/co2-sensor-scd40#ba7ffb81fa20fe3fb128578bfa6f091449d31b99",
+        "lcd-16x2": "github:calliope-net/lcd-16x2#v2.0.6",
+        "pxt-serialmp3": "github:mkleinsb/pxt-serialmp3#v0.0.8"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "6.0.28",
+        "targetId": "calliopemini"
+    },
+    "supportedTargets": [
+        "calliopemini"
+    ],
+    "preferredEditor": "blocksprj"
+}
