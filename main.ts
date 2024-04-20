@@ -11,9 +11,9 @@ input.onButtonEvent(Button.A, input.buttonEventClick(), function () {
 })
 function fTitelName (pOrdner: number, pTitel: number) {
     if (pOrdner == 1 && lcd16x2rgb.between(pTitel, 0, 15)) {
-        lcd16x2rgb.writeText(lcd16x2rgb.lcd16x2_eADDR(lcd16x2rgb.eADDR_LCD.LCD_16x2_x3E), 1, 0, 15, lcd16x2rgb.lcd16x2_text(Ordner1()[pTitel]))
+        lcd16x2rgb.writeText(lcd16x2rgb.lcd16x2_eADDR(lcd16x2rgb.eADDR_LCD.LCD_16x2_x3E), 1, 0, 15, Ordner1()[pTitel])
     } else if (pOrdner == 3 && lcd16x2rgb.between(pTitel, 0, 12)) {
-        lcd16x2rgb.writeText(lcd16x2rgb.lcd16x2_eADDR(lcd16x2rgb.eADDR_LCD.LCD_16x2_x3E), 1, 0, 15, lcd16x2rgb.lcd16x2_text(Ordner3Tabaluga()[pTitel]))
+        lcd16x2rgb.writeText(lcd16x2rgb.lcd16x2_eADDR(lcd16x2rgb.eADDR_LCD.LCD_16x2_x3E), 1, 0, 15, Ordner3Tabaluga()[pTitel])
     } else {
         lcd16x2rgb.writeText(lcd16x2rgb.lcd16x2_eADDR(lcd16x2rgb.eADDR_LCD.LCD_16x2_x3E), 1, 0, 15, lcd16x2rgb.lcd16x2_text("Ordner" + pOrdner + " Titel" + pTitel))
     }
@@ -46,6 +46,9 @@ input.onButtonEvent(Button.B, input.buttonEventValue(ButtonEvent.Hold), function
 serialmp3.onMp3TrackStarted(function () {
     basic.setLedColor(0x0000ff)
     fTitelName(serialmp3.mp3Folder(), serialmp3.mp3Track())
+})
+input.onGesture(Gesture.ScreenUp, function () {
+    serialmp3.runMp3Command(Mp3Command.RESUME)
 })
 function Ordner1 () {
     return [
@@ -103,4 +106,5 @@ loops.everyInterval(5000, function () {
     lcd16x2rgb.comment("CO² und Temperatur messen aller 5 Sekunden")
     lcd16x2rgb.writeText(lcd16x2rgb.lcd16x2_eADDR(lcd16x2rgb.eADDR_LCD.LCD_16x2_x3E), 0, 4, 7, SCD40.get_co2(), lcd16x2rgb.eAlign.right)
     lcd16x2rgb.writeText(lcd16x2rgb.lcd16x2_eADDR(lcd16x2rgb.eADDR_LCD.LCD_16x2_x3E), 0, 12, 13, SCD40.get_temperature(SCD40.SCD40_T_UNIT.C))
+    fTitelName(serialmp3.mp3Folder(), serialmp3.mp3Track())
 })
